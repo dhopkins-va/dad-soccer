@@ -986,8 +986,10 @@ if (SUPABASE_URL.includes('YOUR-PROJECT') || SUPABASE_ANON_KEY.startsWith('YOUR-
   S.loading = false;
   app.innerHTML = `<div class="center signin"><h1>Almost there</h1><p>Add your Supabase URL and anon key to <code>config.js</code>.</p></div>`;
 } else {
-  sb.auth.onAuthStateChange((_event, session) => {
-    const changed = session?.user?.id !== S.session?.user?.id;
+  render(); // spinner until Supabase reports the session
+  sb.auth.onAuthStateChange((event, session) => {
+    // INITIAL_SESSION always needs a first render, even when signed out.
+    const changed = event === 'INITIAL_SESSION' || session?.user?.id !== S.session?.user?.id;
     S.session = session;
     if (!changed) return;
     // Defer: running Supabase queries inside this callback can deadlock.
