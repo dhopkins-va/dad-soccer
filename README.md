@@ -54,7 +54,14 @@ bars show this before kickoff. The logic lives in [`logic.js`](logic.js) and is 
 3. **Redirect URLs.** Under *Authentication → URL Configuration*, set the Site
    URL to where the app is hosted. Add `http://localhost:5173/**` to the
    redirect allow-list for local testing.
-4. **Keys.** Put your project URL and anon (publishable) key in
+4. **Who can sign in.** Run
+   [`supabase/migrations/20261008000000_allowlist.sql`](supabase/migrations/20261008000000_allowlist.sql),
+   then allow each coach's Google email (lowercase):
+   `insert into public.allowed_emails (email) values ('coach@example.com');`.
+   Anyone else who signs in sees "This app is private" and can't read or
+   create any data. Also turn off *Authentication → Sign In / Providers →
+   Allow new users to sign up* once your own account exists.
+5. **Keys.** Put your project URL and anon (publishable) key in
    [`config.js`](config.js). The anon key is meant to be public; row-level
    security protects the data.
 

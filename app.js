@@ -56,6 +56,14 @@ function fail(err) {
 async function loadTeam() {
   S.loading = true;
   render();
+  // The database enforces the allow-list; this just explains it nicely. If the
+  // check itself fails, carry on — the data policies still apply.
+  const allowed = await sb.rpc('is_allowed_user');
+  S.denied = allowed.data === false;
+  if (S.denied) {
+    S.loading = false;
+    return render();
+  }
   const { data: teams, error } = await sb.from('teams').select('*').order('created_at').limit(1);
   if (error) return fail(error);
   S.team = teams[0] ?? null;
@@ -129,6 +137,10 @@ function render() {
     app.innerHTML = signInView();
     return;
   }
+  if (S.denied) {
+    app.innerHTML = deniedView();
+    return;
+  }
   if (!S.team) {
     app.innerHTML = createTeamView();
     return;
@@ -163,6 +175,16 @@ function signInView() {
       <p class="muted">Even play time for every girl, every game.</p>
       ${S.error ? `<div class="banner">${esc(S.error)}</div>` : ''}
       <button class="btn primary big" data-action="sign-in">Sign in with Google</button>
+    </div>`;
+}
+
+function deniedView() {
+  return `
+    <div class="center signin">
+      <div class="ball">🔒</div>
+      <h1>This app is private</h1>
+      <p class="muted">${esc(S.session.user.email)} doesn't have access.</p>
+      <button class="btn primary big" data-action="sign-out">Sign out</button>
     </div>`;
 }
 
@@ -665,7 +687,7 @@ const actions = {
   },
   async 'sign-out'() {
     await sb.auth.signOut();
-    Object.assign(S, { team: null, players: [], game: null, gameId: null, pastGames: [], setup: null });
+    Object.assign(S, { team: null, players: [], game: null, gameId: null, pastGames: [], setup: null, denied: false });
   },
   dismiss() {
     S.error = null;

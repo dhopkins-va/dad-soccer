@@ -67,6 +67,8 @@ export function createClient() {
   const emit = (e) => listeners.forEach((cb) => cb(e, session));
   return {
     from: (table) => new Query(table),
+    // Demo: allowed unless ?denied is in the URL.
+    rpc: async (fn) => ({ data: fn === 'is_allowed_user' ? !location.search.includes('denied') : null, error: null }),
     auth: {
       getSession: async () => ({ data: { session } }),
       onAuthStateChange(cb) {
