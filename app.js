@@ -982,7 +982,7 @@ document.addEventListener('visibilitychange', () => {
 
 // ---- boot --------------------------------------------------------------------
 
-if (SUPABASE_URL.includes('YOUR-PROJECT')) {
+if (SUPABASE_URL.includes('YOUR-PROJECT') || SUPABASE_ANON_KEY.startsWith('YOUR-')) {
   S.loading = false;
   app.innerHTML = `<div class="center signin"><h1>Almost there</h1><p>Add your Supabase URL and anon key to <code>config.js</code>.</p></div>`;
 } else {
