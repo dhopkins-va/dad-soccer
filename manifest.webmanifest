@@ -1,0 +1,10 @@
+{
+  "name": "Sub Manager",
+  "short_name": "Subs",
+  "description": "Even play time for youth soccer substitutions.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f4",
+  "theme_color": "#14532d",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
