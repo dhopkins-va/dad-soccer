@@ -11,448 +11,106 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
-class: text-center
 highlighter: shiki
 lineNumbers: false
-colorSchema: dark
+hideInToc: true
 ---
 
 <style>
 :root {
   --slidev-theme-primary: #22c55e;
-  --slidev-theme-primary-lightest: #dcfce7;
-  --slidev-theme-accent: #22c55e;
 }
 
 .slidev-layout {
-  background: #0f172a;
+  background: #0f172a !important;
   color: #f8fafc;
 }
 
-.slidev-layout h1, .slidev-layout h2 {
+.slidev-layout h1 {
+  color: #22c55e !important;
+}
+
+.slidev-layout h2 {
+  color: #22c55e !important;
+}
+
+.slidev-layout a {
+  color: #22c55e !important;
+}
+
+.green-text {
   color: #22c55e;
 }
 
-.slidev-page-1 .my-auto {
-  max-width: 100%;
+.muted {
+  color: #94a3b8;
 }
 
-.brand-logo {
-  width: 48px;
-  height: 48px;
-  fill: currentColor;
-}
-
-.signup-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.signup-column {
+.card {
   background: #1e293b;
   border-radius: 12px;
   padding: 1.5rem;
-  border: 2px solid #334155;
+  border: 1px solid #334155;
 }
 
-.signup-column h3 {
-  color: #22c55e;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.signup-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.signup-column li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #334155;
-  font-size: 0.9rem;
-}
-
-.signup-column li:last-child {
-  border-bottom: none;
-}
-
-.step-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.step-box {
-  background: #22c55e;
-  color: #0f172a;
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.step-box .num {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.step-box .title {
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-.step-box .desc {
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-
-.two-step-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.two-step-box {
+.green-card {
   background: #22c55e;
   color: #0f172a;
   border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-}
-
-.two-step-box .num {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.secrets-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.secrets-box {
-  background: #1e293b;
-  border-radius: 8px;
   padding: 1.5rem;
-  text-align: center;
 }
 
-.secrets-box.anti {
+.red-card {
   background: #7f1d1d;
-}
-
-.secrets-box .num {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #22c55e;
-}
-
-.secrets-box.anti .num {
-  color: #fca5a5;
-}
-
-.key-line {
-  background: #1e293b;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  font-size: 0.9rem;
-}
-
-.key-line .good {
-  color: #22c55e;
-}
-
-.key-line .bad {
-  color: #f87171;
-}
-
-.sso-big {
-  font-size: 8rem;
-  font-weight: bold;
-  color: #22c55e;
-  line-height: 1;
-}
-
-.sso-subtitle {
-  font-size: 1.5rem;
-  color: #94a3b8;
-  margin-top: 0.5rem;
-}
-
-.feature-list {
-  text-align: left;
-  max-width: 400px;
-}
-
-.feature-list li {
-  padding: 0.5rem 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.feature-list .num {
-  color: #22c55e;
-  font-weight: bold;
-  min-width: 2rem;
-}
-
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.demo-box {
-  background: #22c55e;
-  color: #0f172a;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.demo-box .icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.demo-box .title {
-  font-weight: bold;
-}
-
-.demo-box .desc {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-
-.goal-text {
-  color: #22c55e;
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-}
-
-.pays-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 800px;
-  margin: 2rem auto;
-}
-
-.pays-box {
-  text-align: center;
-}
-
-.pays-box .source {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.pays-box .role {
-  background: #1e293b;
-  border-radius: 8px;
-  padding: 1rem;
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-.pays-box .desc {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin-top: 0.5rem;
-}
-
-.ideas-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.idea-box {
-  background: #1e293b;
   border-radius: 12px;
   padding: 1.5rem;
-  text-align: center;
-}
-
-.idea-box .icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.idea-box .title {
-  color: #22c55e;
-  font-weight: bold;
-}
-
-.idea-box .desc {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin-top: 0.5rem;
-}
-
-.cta-box {
-  background: #22c55e;
-  color: #0f172a;
-  border-radius: 8px;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 1rem;
-}
-
-.excel-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
-}
-
-.excel-col h3 {
-  color: #22c55e;
-  margin-bottom: 1rem;
-}
-
-.excel-item {
-  background: #1e293b;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.excel-item .icon {
-  font-size: 1.5rem;
-}
-
-.excel-item .text .title {
-  font-weight: bold;
-}
-
-.excel-item .text .desc {
-  font-size: 0.8rem;
-  color: #94a3b8;
-}
-
-.homework-box {
-  background: #22c55e;
-  color: #0f172a;
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  font-weight: bold;
-  display: inline-block;
-}
-
-.attacks-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.attacks-list {
-  text-align: left;
-}
-
-.attack-item {
-  margin-bottom: 1.5rem;
-}
-
-.attack-item h4 {
-  color: #22c55e;
-  margin-bottom: 0.25rem;
-}
-
-.attack-item p {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.protection-box {
-  background: #1e293b;
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-}
-
-.protection-box h3 {
-  color: #22c55e;
-  font-size: 1.5rem;
-}
-
-.protection-box p {
-  color: #94a3b8;
 }
 </style>
 
-<!-- Slide 1: In-class signups -->
-
 # In-class signups
 
-<div class="signup-grid">
-  <div class="signup-column">
-    <h3>
-      <img src="/google-cloud.svg" class="brand-logo" style="filter: brightness(0) invert(1);" alt="Google Cloud" />
-      Google Cloud
-    </h3>
-    <ul>
-      <li>Free account</li>
-      <li>OAuth consent screen</li>
-      <li>Testing mode</li>
-      <li>Client ID</li>
+<div class="grid grid-cols-3 gap-6 mt-8">
+  <div class="card">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="/google-cloud.svg" class="w-10 h-10 invert" />
+      <span class="text-xl font-bold green-text">Google Cloud</span>
+    </div>
+    <ul class="text-left text-sm space-y-2 list-none pl-0">
+      <li>• Free account</li>
+      <li>• OAuth consent screen</li>
+      <li>• Testing mode</li>
+      <li>• Client ID</li>
     </ul>
   </div>
-  <div class="signup-column">
-    <h3>
-      <img src="/supabase.svg" class="brand-logo" style="filter: brightness(0) invert(1);" alt="Supabase" />
-      Supabase
-    </h3>
-    <ul>
-      <li>Free account</li>
-      <li>One project per student</li>
-      <li>Edge Functions secrets</li>
-      <li>Row Level Security</li>
+  <div class="card">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="/supabase.svg" class="w-10 h-10 invert" />
+      <span class="text-xl font-bold green-text">Supabase</span>
+    </div>
+    <ul class="text-left text-sm space-y-2 list-none pl-0">
+      <li>• Free account</li>
+      <li>• One project per student</li>
+      <li>• Edge Functions secrets</li>
+      <li>• Row Level Security</li>
     </ul>
   </div>
-  <div class="signup-column">
-    <h3>
-      <img src="/github.svg" class="brand-logo" style="filter: brightness(0) invert(1);" alt="GitHub" />
-      GitHub
-    </h3>
-    <ul>
-      <li>Free account</li>
-      <li>Student account</li>
+  <div class="card">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="/github.svg" class="w-10 h-10 invert" />
+      <span class="text-xl font-bold green-text">GitHub</span>
+    </div>
+    <ul class="text-left text-sm space-y-2 list-none pl-0">
+      <li>• Free account</li>
+      <li>• Student account</li>
     </ul>
   </div>
 </div>
 
-<p style="margin-top: 2rem; color: #94a3b8; font-size: 0.9rem;">
+<p class="mt-8 muted text-sm">
   <strong>Claude Code:</strong> assumed already installed
 </p>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Welcome everyone! Before we dive in, please make sure you have accounts set up for these three services.
@@ -463,21 +121,18 @@ GitHub for version control and deployment.
 
 ---
 layout: center
+class: text-center
 ---
 
 # Claude as the Next Excel
 
-<h2 style="color: #f8fafc; font-weight: normal;">Build your first <span style="color: #22c55e;">real app</span> today</h2>
+<h2 class="!text-white font-normal">Build your first <span class="green-text">real app</span> today</h2>
 
-<p style="color: #94a3b8; margin-top: 2rem;">Custom software for an audience of one</p>
+<p class="muted mt-8">Custom software for an audience of one</p>
 
-<p style="color: #64748b; margin-top: 3rem; font-size: 0.9rem;">
-  Dale Hopkins
-</p>
+<p class="text-slate-500 mt-12 text-sm">Dale Hopkins</p>
 
-<p style="color: #475569; font-size: 0.8rem; margin-top: 2rem;">
-  Today's tools: the standard, but not the only, options
-</p>
+<p class="text-slate-600 text-xs mt-6">Today's tools: the standard, but not the only, options</p>
 
 <!--
 The title says it all - Claude can help you build real applications as easily as you might create a spreadsheet.
@@ -486,25 +141,26 @@ The key insight: we're building for an audience of one - yourself, or a very sma
 
 ---
 layout: center
+class: text-center
 ---
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 3rem;">
-  <div style="font-size: 12rem; font-weight: bold; color: #22c55e; line-height: 1;">1</div>
-  <div style="text-align: left;">
-    <p style="font-size: 1.5rem; color: #94a3b8; margin: 0;">user</p>
+<div class="flex items-center justify-center gap-12">
+  <div class="text-[12rem] font-bold green-text leading-none">1</div>
+  <div class="text-left">
+    <p class="text-2xl muted m-0">user</p>
   </div>
 </div>
 
-<h1 style="margin-top: 2rem;">Audience of one</h1>
+# Audience of one
 
-<p style="color: #94a3b8;">Apps that would never be built commercially</p>
+<p class="muted">Apps that would never be built commercially</p>
 
-<div style="background: #1e293b; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-  <p style="color: #22c55e; margin: 0 0 0.5rem 0; font-weight: bold;">Example: rec soccer</p>
-  <p style="color: #94a3b8; margin: 0; font-size: 0.9rem;">A father coaching under-10 rec soccer, optimizing fair play time</p>
+<div class="card max-w-md mx-auto mt-8 text-left">
+  <p class="green-text font-bold m-0 mb-2">Example: rec soccer</p>
+  <p class="muted text-sm m-0">A father coaching under-10 rec soccer, optimizing fair play time</p>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 This is the magic of audience-of-one apps.
@@ -518,30 +174,30 @@ No company would build that, but Claude helped me build it in a weekend.
 
 # Why SSO first
 
-<p style="color: #94a3b8;">Start with the attacks it stops</p>
+<p class="muted">Start with the attacks it stops</p>
 
-<div class="attacks-grid">
-  <div class="attacks-list">
-    <div class="attack-item">
-      <h4>Credential stuffing</h4>
-      <p>No app password to reuse or leak</p>
+<div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+  <div class="text-left space-y-6">
+    <div>
+      <h4 class="green-text m-0 mb-1">Credential stuffing</h4>
+      <p class="muted text-sm m-0">No app password to reuse or leak</p>
     </div>
-    <div class="attack-item">
-      <h4>Phishing</h4>
-      <p>Credentials only go to Google's sign-in page</p>
+    <div>
+      <h4 class="green-text m-0 mb-1">Phishing</h4>
+      <p class="muted text-sm m-0">Credentials only go to Google's sign-in page</p>
     </div>
-    <div class="attack-item">
-      <h4>Session hijacking</h4>
-      <p>Short-lived tokens, not a static key</p>
+    <div>
+      <h4 class="green-text m-0 mb-1">Session hijacking</h4>
+      <p class="muted text-sm m-0">Short-lived tokens, not a static key</p>
     </div>
   </div>
-  <div class="protection-box">
-    <h3>Protection first,</h3>
-    <h3>OAuth flow second</h3>
+  <div class="card text-center flex flex-col justify-center">
+    <h3 class="green-text text-2xl m-0">Protection first,</h3>
+    <h3 class="green-text text-2xl m-0">OAuth flow second</h3>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Why do we start with SSO? Because security should come FIRST, not be bolted on later.
@@ -553,30 +209,30 @@ You get enterprise-grade auth for free.
 
 # Google sign-in via Supabase
 
-<div class="step-grid">
-  <div class="step-box">
-    <div class="num">01.</div>
-    <div class="title">Google Cloud</div>
-    <div class="desc">OAuth consent screen and client ID</div>
+<div class="grid grid-cols-4 gap-4 mt-12">
+  <div class="green-card text-center">
+    <div class="text-3xl font-bold">01.</div>
+    <div class="font-semibold mt-2">Google Cloud</div>
+    <div class="text-xs opacity-80 mt-1">OAuth consent screen and client ID</div>
   </div>
-  <div class="step-box">
-    <div class="num">02.</div>
-    <div class="title">Supabase Auth</div>
-    <div class="desc">Handles the Google sign-in</div>
+  <div class="green-card text-center">
+    <div class="text-3xl font-bold">02.</div>
+    <div class="font-semibold mt-2">Supabase Auth</div>
+    <div class="text-xs opacity-80 mt-1">Handles the Google sign-in</div>
   </div>
-  <div class="step-box">
-    <div class="num">03.</div>
-    <div class="title">Edge Function</div>
-    <div class="desc">Holds the client secret</div>
+  <div class="green-card text-center">
+    <div class="text-3xl font-bold">03.</div>
+    <div class="font-semibold mt-2">Edge Function</div>
+    <div class="text-xs opacity-80 mt-1">Holds the client secret</div>
   </div>
-  <div class="step-box">
-    <div class="num">04.</div>
-    <div class="title">Front end</div>
-    <div class="desc">Never sees the secret</div>
+  <div class="green-card text-center">
+    <div class="text-3xl font-bold">04.</div>
+    <div class="font-semibold mt-2">Front end</div>
+    <div class="text-xs opacity-80 mt-1">Never sees the secret</div>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Here's the four-step flow:
@@ -591,31 +247,31 @@ This is the secure pattern that keeps your app safe.
 
 # Keep secrets off the front end
 
-<div class="secrets-grid">
-  <div class="secrets-box">
-    <div class="num">01</div>
-    <div class="title">Users</div>
-    <div class="desc" style="color: #94a3b8; font-size: 0.8rem; margin-top: 0.5rem;">Read and write data</div>
+<div class="grid grid-cols-3 gap-4 mt-8">
+  <div class="card text-center">
+    <div class="text-2xl font-bold green-text">01</div>
+    <div class="font-semibold mt-2">Users</div>
+    <div class="muted text-sm mt-1">Read and write data</div>
   </div>
-  <div class="secrets-box">
-    <div class="num">02</div>
-    <div class="title">Owner</div>
-    <div class="desc" style="color: #94a3b8; font-size: 0.8rem; margin-top: 0.5rem;">Alone spends the tokens</div>
+  <div class="card text-center">
+    <div class="text-2xl font-bold green-text">02</div>
+    <div class="font-semibold mt-2">Owner</div>
+    <div class="muted text-sm mt-1">Alone spends the tokens</div>
   </div>
-  <div class="secrets-box anti">
-    <div class="num">03</div>
-    <div class="title">Anti-pattern</div>
-    <div class="desc" style="color: #fca5a5; font-size: 0.8rem; margin-top: 0.5rem;">A static key in the front end</div>
+  <div class="red-card text-center">
+    <div class="text-2xl font-bold text-red-300">03</div>
+    <div class="font-semibold mt-2">Anti-pattern</div>
+    <div class="text-red-300 text-sm mt-1">A static key in the front end</div>
   </div>
 </div>
 
-<div class="key-line">
-  <span><span class="good">Anon key:</span> public, fine in the client app</span>
-  <span>|</span>
-  <span><span class="bad">Service role key:</span> never in the client</span>
+<div class="card mt-6 text-center">
+  <span class="green-text font-semibold">Anon key:</span> public, fine in the client app
+  <span class="mx-4 muted">|</span>
+  <span class="text-red-400 font-semibold">Service role key:</span> never in the client
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 This is the cardinal rule: secrets stay server-side.
@@ -628,20 +284,20 @@ If you see the service role key in your frontend JS, stop and fix it immediately
 
 # From spreadsheet to app
 
-<div class="two-step-grid">
-  <div class="two-step-box">
-    <div class="num">01.</div>
-    <div class="title" style="font-weight: bold; margin-top: 1rem;">Sheet first</div>
-    <div class="desc" style="font-size: 0.9rem; margin-top: 0.5rem;">Start from the spreadsheet</div>
+<div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto mt-16">
+  <div class="green-card text-center py-8">
+    <div class="text-4xl font-bold">01.</div>
+    <div class="font-bold text-xl mt-4">Sheet first</div>
+    <div class="text-sm mt-2">Start from the spreadsheet</div>
   </div>
-  <div class="two-step-box">
-    <div class="num">02.</div>
-    <div class="title" style="font-weight: bold; margin-top: 1rem;">Then a secure app</div>
-    <div class="desc" style="font-size: 0.9rem; margin-top: 0.5rem;">Same idea, behind sign-in</div>
+  <div class="green-card text-center py-8">
+    <div class="text-4xl font-bold">02.</div>
+    <div class="font-bold text-xl mt-4">Then a secure app</div>
+    <div class="text-sm mt-2">Same idea, behind sign-in</div>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Here's the workflow that makes this approachable:
@@ -654,24 +310,24 @@ Don't try to build the app from scratch - let your spreadsheet be your prototype
 
 # SSO first
 
-<p style="color: #94a3b8;">Secure the app first</p>
+<p class="muted">Secure the app first</p>
 
-<div style="display: flex; gap: 3rem; align-items: flex-start; justify-content: center; margin-top: 2rem;">
-  <div style="text-align: center;">
-    <div class="sso-big">SSO</div>
-    <div class="sso-subtitle">before features</div>
+<div class="flex gap-12 items-start justify-center mt-8">
+  <div class="text-center">
+    <div class="text-8xl font-bold green-text leading-none">SSO</div>
+    <div class="text-xl muted mt-2">before features</div>
   </div>
-  <div class="feature-list" style="margin-top: 1rem;">
-    <p style="color: #94a3b8; margin-bottom: 1rem;">Sign-in comes first, then features</p>
-    <ul style="list-style: none; padding: 0;">
-      <li><span class="num">01</span> Google sign-in via Supabase Auth</li>
-      <li><span class="num">02</span> Client secret stays in an Edge Function</li>
-      <li><span class="num">03</span> Row Level Security on your data</li>
-    </ul>
+  <div class="text-left mt-4">
+    <p class="muted mb-4">Sign-in comes first, then features</p>
+    <div class="space-y-3">
+      <div><span class="green-text font-bold mr-2">01</span> Google sign-in via Supabase Auth</div>
+      <div><span class="green-text font-bold mr-2">02</span> Client secret stays in an Edge Function</div>
+      <div><span class="green-text font-bold mr-2">03</span> Row Level Security on your data</div>
+    </div>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 I want to emphasize this again: SSO comes BEFORE features.
@@ -683,38 +339,38 @@ Build the sign-in first. Then add Row Level Security. THEN build features.
 
 # Demo: soccer swap fairness engine
 
-<div class="demo-grid">
-  <div class="demo-box">
-    <div class="icon">📋</div>
-    <div class="title">Roster</div>
-    <div class="desc">The players</div>
+<div class="grid grid-cols-4 gap-4 mt-8">
+  <div class="green-card text-center">
+    <div class="text-3xl mb-2">📋</div>
+    <div class="font-bold">Roster</div>
+    <div class="text-xs opacity-80">The players</div>
   </div>
-  <div class="demo-box">
-    <div class="icon">⚽</div>
-    <div class="title">Positions</div>
-    <div class="desc">Who plays where</div>
+  <div class="green-card text-center">
+    <div class="text-3xl mb-2">⚽</div>
+    <div class="font-bold">Positions</div>
+    <div class="text-xs opacity-80">Who plays where</div>
   </div>
-  <div class="demo-box">
-    <div class="icon">✓</div>
-    <div class="title">Attendance</div>
-    <div class="desc">Who is here today</div>
+  <div class="green-card text-center">
+    <div class="text-3xl mb-2">✓</div>
+    <div class="font-bold">Attendance</div>
+    <div class="text-xs opacity-80">Who is here today</div>
   </div>
-  <div class="demo-box">
-    <div class="icon">🔄</div>
-    <div class="title">Swaps</div>
-    <div class="desc">Swap command or drag UI</div>
+  <div class="green-card text-center">
+    <div class="text-3xl mb-2">🔄</div>
+    <div class="font-bold">Swaps</div>
+    <div class="text-xs opacity-80">Swap command or drag UI</div>
   </div>
 </div>
 
-<p class="goal-text">Goal: fair play time for every kid</p>
+<p class="green-text text-xl mt-8">Goal: fair play time for every kid</p>
 
-<p style="margin-top: 2rem;">
-  <a href="https://dhopkins-va.github.io/dad-soccer/" target="_blank" style="color: #22c55e; text-decoration: underline;">
+<p class="mt-6">
+  <a href="https://dhopkins-va.github.io/dad-soccer/" target="_blank" class="underline">
     → Try the live app: dhopkins-va.github.io/dad-soccer
   </a>
 </p>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Let me show you the app I built for my soccer team.
@@ -727,25 +383,31 @@ Click the link to see it live - this is what you'll build something like today.
 
 # Who pays for what
 
-<div class="pays-grid">
-  <div class="pays-box">
-    <div class="source">Claude</div>
-    <div class="role" style="color: #22c55e;">Owner</div>
-    <div class="desc">Pays the Claude subscription</div>
+<div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-12">
+  <div class="text-center">
+    <div class="muted text-sm mb-2">Claude</div>
+    <div class="card py-4">
+      <div class="green-text font-bold text-xl">Owner</div>
+    </div>
+    <div class="muted text-xs mt-2">Pays the Claude subscription</div>
   </div>
-  <div class="pays-box">
-    <div class="source">Supabase</div>
-    <div class="role" style="color: #22c55e;">Collab</div>
-    <div class="desc">The shared layer for users</div>
+  <div class="text-center">
+    <div class="muted text-sm mb-2">Supabase</div>
+    <div class="card py-4">
+      <div class="green-text font-bold text-xl">Collab</div>
+    </div>
+    <div class="muted text-xs mt-2">The shared layer for users</div>
   </div>
-  <div class="pays-box">
-    <div class="source">Tokens</div>
-    <div class="role" style="color: #22c55e;">Users</div>
-    <div class="desc">Spend no Claude tokens</div>
+  <div class="text-center">
+    <div class="muted text-sm mb-2">Tokens</div>
+    <div class="card py-4">
+      <div class="green-text font-bold text-xl">Users</div>
+    </div>
+    <div class="muted text-xs mt-2">Spend no Claude tokens</div>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Let's talk money.
@@ -759,27 +421,29 @@ This is sustainable: one subscription, unlimited users on the free tier.
 
 # Sample app ideas
 
-<div class="ideas-grid">
-  <div class="idea-box">
-    <div class="icon">📊</div>
-    <div class="title">Expense tracker</div>
-    <div class="desc">Built from your receipts</div>
+<div class="grid grid-cols-3 gap-6 mt-8">
+  <div class="card text-center">
+    <div class="text-3xl mb-2">📊</div>
+    <div class="green-text font-bold">Expense tracker</div>
+    <div class="muted text-sm mt-2">Built from your receipts</div>
   </div>
-  <div class="idea-box">
-    <div class="icon">📚</div>
-    <div class="title">Study plan</div>
-    <div class="desc">From a syllabus, with voting</div>
+  <div class="card text-center">
+    <div class="text-3xl mb-2">📚</div>
+    <div class="green-text font-bold">Study plan</div>
+    <div class="muted text-sm mt-2">From a syllabus, with voting</div>
   </div>
-  <div class="idea-box">
-    <div class="icon">🏆</div>
-    <div class="title">Coaching app</div>
-    <div class="desc">Like the soccer swap demo</div>
+  <div class="card text-center">
+    <div class="text-3xl mb-2">🏆</div>
+    <div class="green-text font-bold">Coaching app</div>
+    <div class="muted text-sm mt-2">Like the soccer swap demo</div>
   </div>
 </div>
 
-<div class="cta-box">Your turn: build your first real app today</div>
+<div class="green-card inline-block px-8 py-4 mt-8 font-bold">
+  Your turn: build your first real app today
+</div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 Here are some ideas to get you started.
@@ -793,40 +457,43 @@ The point is: pick something YOU need. Audience of one.
 
 # When this beats Excel
 
-<div class="excel-grid">
-  <div class="excel-col">
-    <h3>When to build an app</h3>
-    <div class="excel-item">
-      <div class="icon">👥</div>
-      <div class="text">
-        <div class="title">Many users</div>
-        <div class="desc">Others read and write the same data</div>
+<div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+  <div>
+    <h3 class="green-text mb-4">When to build an app</h3>
+    <div class="space-y-3">
+      <div class="card flex items-center gap-4">
+        <div class="text-2xl">👥</div>
+        <div>
+          <div class="font-bold">Many users</div>
+          <div class="muted text-xs">Others read and write the same data</div>
+        </div>
       </div>
-    </div>
-    <div class="excel-item">
-      <div class="icon">🔐</div>
-      <div class="text">
-        <div class="title">Secure sign-in</div>
-        <div class="desc">Each user signs in with Google</div>
+      <div class="card flex items-center gap-4">
+        <div class="text-2xl">🔐</div>
+        <div>
+          <div class="font-bold">Secure sign-in</div>
+          <div class="muted text-xs">Each user signs in with Google</div>
+        </div>
       </div>
-    </div>
-    <div class="excel-item">
-      <div class="icon">⚙️</div>
-      <div class="text">
-        <div class="title">Custom logic</div>
-        <div class="desc">Rules like fair play time</div>
+      <div class="card flex items-center gap-4">
+        <div class="text-2xl">⚙️</div>
+        <div>
+          <div class="font-bold">Custom logic</div>
+          <div class="muted text-xs">Rules like fair play time</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="excel-col">
-    <h3>Homework</h3>
-    <div class="homework-box">
-      Build your own<br/>audience-of-one app
+  <div>
+    <h3 class="green-text mb-4">Homework</h3>
+    <div class="green-card py-8 text-center">
+      <div class="font-bold text-xl">Build your own</div>
+      <div class="font-bold text-xl">audience-of-one app</div>
     </div>
   </div>
 </div>
 
-<div class="absolute bottom-4 left-4 text-sm text-gray-500">Dale Hopkins</div>
+<div class="absolute bottom-4 left-4 text-sm muted">Dale Hopkins</div>
 
 <!--
 So when does this beat Excel?
