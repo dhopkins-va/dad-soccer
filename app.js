@@ -175,6 +175,7 @@ function signInView() {
       <p class="muted">Even play time for every girl, every game.</p>
       ${S.error ? `<div class="banner">${esc(S.error)}</div>` : ''}
       <button class="btn primary big" data-action="sign-in">Sign in with Google</button>
+      <a class="deck-link" href="lecture/">📽️ Presentation: Claude as the Next Excel →</a>
     </div>`;
 }
 

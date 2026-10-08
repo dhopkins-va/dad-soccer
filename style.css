@@ -219,3 +219,5 @@ button.pos { min-height: 36px; min-width: 44px; cursor: pointer; }
 .past { display: flex; justify-content: space-between; align-items: center; }
 .res-W { color: var(--accent); }
 .res-L { color: var(--danger); }
+.deck-link { margin-top: 12px; color: var(--brand); font-weight: 600; text-decoration: none; padding: 10px; }
+.deck-link:hover { text-decoration: underline; }
