@@ -48,6 +48,7 @@ jobs:
           cp icon.svg _site/
           cp manifest.webmanifest _site/
           cp .nojekyll _site/
+          cp -r dev _site/   # demo page (dev/demo.html)
           # Copy built lecture deck
           cp -r lecture/dist/* _site/lecture/
 
