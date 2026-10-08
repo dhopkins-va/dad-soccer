@@ -22,11 +22,16 @@ This builds the deck with `--base /dad-soccer/lecture/` for deployment alongside
 
 ## Deployment
 
-The deck deploys automatically via GitHub Actions alongside the root soccer app:
+The deck deploys automatically via GitHub Actions (`.github/workflows/deploy.yml`) alongside the root soccer app:
 - **Soccer app**: https://dhopkins-va.github.io/dad-soccer/
 - **Lecture deck**: https://dhopkins-va.github.io/dad-soccer/lecture/
 
-The workflow builds Slidev with the correct base path and combines both artifacts into a single GitHub Pages deployment.
+The workflow:
+1. Builds the Slidev deck with `--base /dad-soccer/lecture/`
+2. Copies root app files (index.html, app.js, etc.)
+3. Deploys the combined site to GitHub Pages
+
+**Required GitHub setting**: In the repository Settings → Pages, set the source to "GitHub Actions" (not "Deploy from a branch").
 
 ## Exporting
 

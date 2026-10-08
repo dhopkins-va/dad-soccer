@@ -1,0 +1,48 @@
+/* Global styles for the lecture deck */
+
+/* Navy background for all slides */
+.slidev-layout,
+.slidev-page,
+#slide-container,
+.slidev-layout.default,
+.slidev-layout.center,
+.slidev-layout.cover {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* Green headings */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  color: #22c55e !important;
+}
+
+/* Green links */
+.slidev-layout a {
+  color: #22c55e !important;
+}
+
+/* Ensure body text is light */
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout span,
+.slidev-layout div {
+  color: inherit;
+}
+
+/* Muted text */
+.text-slate-400,
+.text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+/* Override any light backgrounds from the theme */
+:root {
+  --slidev-slide-background: #0f172a;
+}
