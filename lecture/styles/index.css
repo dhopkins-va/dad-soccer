@@ -46,3 +46,11 @@
 :root {
   --slidev-slide-background: #0f172a;
 }
+
+/* Navy text on green-filled cards for proper contrast */
+.bg-green-500,
+.bg-green-500 div,
+.bg-green-500 span,
+.bg-green-500 p {
+  color: #0f172a !important;
+}
