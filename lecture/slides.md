@@ -27,9 +27,8 @@ css: unocss
     </div>
     <ul class="text-left text-sm space-y-2 list-disc pl-4 text-slate-300">
       <li>Free account</li>
-      <li>OAuth consent screen</li>
-      <li>Testing mode</li>
-      <li>Client ID</li>
+      <li>OAuth 2.0 consent screen</li>
+      <li>OAuth 2.0 client ID</li>
     </ul>
   </div>
   <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
@@ -65,7 +64,7 @@ css: unocss
 
 <!--
 Welcome everyone! Before we dive in, please make sure you have accounts set up for these three services.
-Google Cloud is for OAuth - we'll create a consent screen and get a client ID.
+Google Cloud is for OAuth 2.0 - we'll create a consent screen and an OAuth 2.0 client ID.
 Supabase will handle our authentication and database.
 GitHub for version control and deployment.
 -->
@@ -146,8 +145,8 @@ No company would build that, but Claude helped me build it in a weekend.
     </div>
   </div>
   <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 text-center flex flex-col justify-center">
-    <h3 class="text-green-500 text-2xl m-0">Protection first,</h3>
-    <h3 class="text-green-500 text-2xl m-0">OAuth flow second</h3>
+    <h3 class="text-green-500 text-2xl m-0">Default secure,</h3>
+    <h3 class="text-green-500 text-2xl m-0">no public data</h3>
   </div>
 </div>
 
@@ -155,7 +154,8 @@ No company would build that, but Claude helped me build it in a weekend.
 <div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">4 / 12</div>
 
 <!--
-Why do we start with SSO? Because security should come FIRST, not be bolted on later.
+Why do we start with SSO? Because the app should be secure by default, not secured later.
+Nothing is public: until someone signs in, the app shows them no data at all.
 Google handles all the hard security stuff - credential stuffing, phishing, token management.
 You get enterprise-grade auth for free.
 -->
@@ -195,56 +195,80 @@ This is the secure pattern that keeps your app safe.
 
 ---
 
-# Keep secrets off the front end
+# Configuration walkthrough
 
-<div class="grid grid-cols-3 gap-4 mt-8">
-  <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 text-center">
-    <div class="text-2xl font-bold text-green-500">01</div>
-    <div class="font-semibold mt-2">Users</div>
-    <div class="text-slate-400 text-sm mt-1">Read and write data</div>
+<div class="grid grid-cols-5 gap-6 mt-4">
+  <div class="col-span-3 space-y-2 text-sm">
+    <div class="bg-slate-800 rounded-lg px-4 py-2 border border-slate-700 flex gap-3">
+      <span class="text-green-500 font-bold">01</span>
+      <span><b>Accounts</b> <span class="text-slate-400">— Google Cloud, Supabase, GitHub</span></span>
+    </div>
+    <div class="bg-slate-800 rounded-lg px-4 py-2 border border-slate-700 flex gap-3">
+      <span class="text-green-500 font-bold">02</span>
+      <span><b>Supabase</b> <span class="text-slate-400">— create a project, open Auth → Google sign-in, copy its <span class="text-white">redirect URL</span></span></span>
+    </div>
+    <div class="bg-slate-800 rounded-lg px-4 py-2 border border-slate-700 flex gap-3">
+      <span class="text-green-500 font-bold">03</span>
+      <span><b>Google Cloud</b> <span class="text-slate-400">— OAuth 2.0 consent screen, then an OAuth 2.0 client: paste the <span class="text-white">redirect URL</span>, copy the <span class="text-white">client ID</span> + <span class="text-white">client secret</span></span></span>
+    </div>
+    <div class="bg-slate-800 rounded-lg px-4 py-2 border border-slate-700 flex gap-3">
+      <span class="text-green-500 font-bold">04</span>
+      <span><b>Supabase</b> <span class="text-slate-400">— paste the <span class="text-white">client ID</span> + <span class="text-white">secret</span>; set the site URL to your GitHub Pages address</span></span>
+    </div>
+    <div class="bg-green-500 text-slate-900 rounded-lg px-4 py-2 flex gap-3">
+      <span class="font-bold">05</span>
+      <span><b>Claude</b> — give it your Supabase URL, Supabase publishable key, and GitHub repo URL</span>
+    </div>
   </div>
-  <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 text-center">
-    <div class="text-2xl font-bold text-green-500">02</div>
-    <div class="font-semibold mt-2">Owner</div>
-    <div class="text-slate-400 text-sm mt-1">Alone spends the tokens</div>
+  <div class="col-span-2 bg-slate-800 rounded-xl p-4 border border-slate-700 text-sm">
+    <div class="text-green-500 font-bold mb-3">What goes where</div>
+    <table class="w-full text-xs">
+      <tbody>
+        <tr><td class="py-1 pr-2">Redirect URL</td><td class="text-slate-400">Supabase → Google</td></tr>
+        <tr><td class="py-1 pr-2">Client ID</td><td class="text-slate-400">Google → Supabase</td></tr>
+        <tr><td class="py-1 pr-2">Client secret</td><td class="text-slate-400">Google → Supabase <span class="text-red-400">only</span></td></tr>
+        <tr><td class="py-1 pr-2">Supabase URL</td><td class="text-slate-400">Supabase → Claude</td></tr>
+        <tr><td class="py-1 pr-2">Publishable key</td><td class="text-slate-400">Supabase → Claude</td></tr>
+        <tr><td class="py-1 pr-2">GitHub repo URL</td><td class="text-slate-400">GitHub → Claude</td></tr>
+      </tbody>
+    </table>
+    <p class="text-slate-500 text-xs mt-3 mb-0">The client secret never goes to Claude or the app.</p>
   </div>
-  <div class="bg-red-900 rounded-xl p-6 text-center">
-    <div class="text-2xl font-bold text-red-300">03</div>
-    <div class="font-semibold mt-2">Anti-pattern</div>
-    <div class="text-red-300 text-sm mt-1">A static key in the front end</div>
-  </div>
-</div>
-
-<div class="bg-slate-800 rounded-xl p-4 border border-slate-700 mt-6 text-center">
-  <span class="text-green-500 font-semibold">Anon key:</span> public, fine in the client app
-  <span class="mx-4 text-slate-500">|</span>
-  <span class="text-red-400 font-semibold">Service role key:</span> never in the client
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
 <div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">6 / 12</div>
 
 <!--
-This is the cardinal rule: secrets stay server-side.
-The anon key is DESIGNED to be public - it's in your JavaScript, and that's fine.
-The service role key has full database access - it NEVER goes in client code.
-If you see the service role key in your frontend JS, stop and fix it immediately.
+Order matters here, because each step hands a value to the next one.
+1. Create the three accounts.
+2. In Supabase, create a project and turn on Google sign-in. Supabase shows you a redirect (callback) URL - copy it.
+3. In Google Cloud, set up the OAuth 2.0 consent screen, then create an OAuth 2.0 client ID. Paste Supabase's redirect URL into it. Google gives you a client ID and a client secret.
+4. Back in Supabase, paste the client ID and client secret into the Google sign-in settings. Also set the site URL to where the app will live on GitHub Pages - otherwise sign-in sends you back to localhost.
+5. Finally, Claude needs three things: your Supabase URL, your Supabase publishable key, and your GitHub repo URL.
+Notice the client secret only ever goes from Google into Supabase. Claude never sees it, and neither does the app.
 -->
 
 ---
 
 # From spreadsheet to app
 
-<div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto mt-16">
-  <div class="bg-green-500 text-slate-900 rounded-xl p-8 text-center">
-    <div class="text-4xl font-bold">01.</div>
-    <div class="font-bold text-xl mt-4">Sheet first</div>
-    <div class="text-sm mt-2">Start from the spreadsheet</div>
+<p class="text-slate-400">Spreadsheets solve lots of problems. An app lets you keep building.</p>
+
+<div class="mt-10 space-y-10 max-w-4xl mx-auto">
+  <div>
+    <div class="text-sm text-slate-400 mb-2">Spreadsheet</div>
+    <div class="flex gap-2 bg-slate-800 border border-slate-700 rounded-xl p-3 w-fit">
+      <span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Data</span><span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Formulas</span><span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Charts</span>
+    </div>
   </div>
-  <div class="bg-green-500 text-slate-900 rounded-xl p-8 text-center">
-    <div class="text-4xl font-bold">02.</div>
-    <div class="font-bold text-xl mt-4">Then a secure app</div>
-    <div class="text-sm mt-2">Same idea, behind sign-in</div>
+  <div>
+    <div class="text-sm text-slate-400 mb-2">App</div>
+    <div class="flex flex-wrap gap-2 bg-slate-800 border border-green-500 rounded-xl p-3">
+      <span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Data</span><span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Formulas</span><span class="bg-slate-600 text-white rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Charts</span>
+      <span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Sign-in</span><span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Shared data</span><span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Custom rules</span><span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Phone-ready</span><span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Live clock</span><span class="bg-green-500 text-slate-900 rounded-md px-3 py-2 text-base font-semibold whitespace-nowrap">Alerts</span>
+      <span class="text-green-500 text-base font-semibold self-center px-1">… and whatever you need next →</span>
+    </div>
   </div>
 </div>
 
@@ -252,10 +276,10 @@ If you see the service role key in your frontend JS, stop and fix it immediately
 <div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">7 / 12</div>
 
 <!--
-Here's the workflow that makes this approachable:
-Start in a spreadsheet. Get your data structure right. Understand what you're building.
-THEN move to an app with proper sign-in and security.
-Don't try to build the app from scratch - let your spreadsheet be your prototype.
+Spreadsheets are great - they solve a huge range of problems, and that's why everyone uses them.
+But a spreadsheet only goes so far: data, formulas, charts.
+An app starts with the same things and keeps going: sign-in, shared data, your own rules, a phone-friendly screen, a live game clock, alerts.
+And it keeps growing - every week you can ask Claude for the next thing you need.
 -->
 
 ---
@@ -264,7 +288,7 @@ Don't try to build the app from scratch - let your spreadsheet be your prototype
 
 <p class="text-slate-400">Secure the app first</p>
 
-<div class="flex gap-12 items-start justify-center mt-8">
+<div class="flex gap-12 items-start justify-center mt-4">
   <div class="text-center">
     <div class="text-8xl font-bold text-green-500 leading-none">SSO</div>
     <div class="text-xl text-slate-400 mt-2">before features</div>
@@ -279,6 +303,23 @@ Don't try to build the app from scratch - let your spreadsheet be your prototype
   </div>
 </div>
 
+<div class="grid grid-cols-3 gap-4 mt-8 text-sm">
+  <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+    <div class="font-bold">GitHub Pages <span class="text-slate-400 font-normal">· public</span></div>
+    <div class="text-slate-400 text-xs mt-1">The app's code, plus the Supabase URL and publishable key — safe for anyone to see</div>
+  </div>
+  <div class="bg-slate-800 rounded-xl p-4 border border-green-500">
+    <div class="font-bold text-green-500">Supabase <span class="text-slate-400 font-normal">· private</span></div>
+    <div class="text-slate-400 text-xs mt-1">Your data, locked by Row Level Security, and the Google client secret</div>
+  </div>
+  <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+    <div class="font-bold">Google <span class="text-slate-400 font-normal">· identity</span></div>
+    <div class="text-slate-400 text-xs mt-1">Passwords and sign-in. The app never sees a password.</div>
+  </div>
+</div>
+
+<p class="text-center text-sm mt-4"><span class="text-red-400 font-semibold">No secrets in the front end.</span> <span class="text-slate-400">The service role key never leaves Supabase.</span></p>
+
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
 <div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">8 / 12</div>
 
@@ -286,6 +327,10 @@ Don't try to build the app from scratch - let your spreadsheet be your prototype
 I want to emphasize this again: SSO comes BEFORE features.
 Don't build cool features and then try to add auth. That's how security bugs happen.
 Build the sign-in first. Then add Row Level Security. THEN build features.
+And here's where everything lives. The app itself runs on GitHub Pages, and its code is public - that's fine, because nothing in it is secret. The Supabase URL and publishable key are designed to be public.
+Your data lives in Supabase, locked down by Row Level Security, along with the Google client secret.
+Google handles passwords - the app never sees one.
+The one key that must never appear in the front end is the Supabase service role key.
 -->
 
 ---
@@ -317,12 +362,6 @@ Build the sign-in first. Then add Row Level Security. THEN build features.
 
 <p class="text-green-500 text-xl mt-8">Goal: fair play time for every kid</p>
 
-<p class="mt-6">
-  <a href="https://dhopkins-va.github.io/dad-soccer/" target="_blank" class="text-green-500 underline">
-    → Try the live app: dhopkins-va.github.io/dad-soccer
-  </a>
-</p>
-
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
 <div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">9 / 12</div>
 
@@ -330,7 +369,6 @@ Build the sign-in first. Then add Row Level Security. THEN build features.
 Let me show you the app I built for my soccer team.
 Roster management, position tracking, attendance, and the swap system.
 The goal is simple: make sure every kid gets fair play time.
-Click the link to see it live - this is what you'll build something like today.
 -->
 
 ---

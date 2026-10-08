@@ -11,5 +11,8 @@
     "@slidev/cli": "^0.50.0",
     "@slidev/theme-default": "latest",
     "playwright-chromium": "^1.64.0"
+  },
+  "overrides": {
+    "fuse.js": "7.2.0"
   }
 }
