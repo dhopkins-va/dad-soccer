@@ -1,0 +1,15 @@
+{
+  "name": "claude-excel-lecture",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /dad-soccer/lecture/",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.50.0",
+    "@slidev/theme-default": "latest",
+    "playwright-chromium": "^1.64.0"
+  }
+}
