@@ -17,6 +17,27 @@ hideInToc: true
 css: unocss
 ---
 
+<div class="grid grid-cols-2 gap-10 items-start h-full">
+  <div>
+    <img src="/about-photo.jpg" class="rounded-xl w-full border border-slate-700" />
+    <h1 class="mt-6! mb-1!">Dale Hopkins</h1>
+    <p class="text-xl text-white m-0">Software for an Audience of One</p>
+    <p class="text-slate-400 m-0 mt-1">October 7, 2026</p>
+  </div>
+  <div>
+    <img src="/vendasta-building.jpg" alt="Vendasta building" class="rounded-xl w-full border border-slate-700" />
+    <p class="text-slate-400 text-sm m-0 mt-3">Vendasta</p>
+  </div>
+</div>
+
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">1 / 13</div>
+
+<!--
+A little about me before we start.
+-->
+
+---
+
 # In-class signups
 
 <div class="grid grid-cols-3 gap-6 mt-8">
@@ -60,7 +81,7 @@ css: unocss
 </p>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">1 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">2 / 13</div>
 
 <!--
 Welcome everyone! Before we dive in, please make sure you have accounts set up for these three services.
@@ -84,7 +105,7 @@ class: text-center
 
 <p class="text-slate-600 text-xs mt-6">Today's tools: the standard, but not the only, options</p>
 
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">2 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">3 / 13</div>
 
 <!--
 The title says it all - Claude can help you build real applications as easily as you might create a spreadsheet.
@@ -113,7 +134,7 @@ class: text-center
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">3 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">4 / 13</div>
 
 <!--
 This is the magic of audience-of-one apps.
@@ -151,7 +172,7 @@ No company would build that, but Claude helped me build it in a weekend.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">4 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">5 / 13</div>
 
 <!--
 Why do we start with SSO? Because the app should be secure by default, not secured later.
@@ -183,7 +204,7 @@ You get enterprise-grade auth for free.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">5 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">6 / 13</div>
 
 <!--
 Here's the three-step flow:
@@ -237,7 +258,7 @@ This is the secure pattern that keeps your app safe.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">6 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">7 / 13</div>
 
 <!--
 Order matters here, because each step hands a value to the next one.
@@ -273,7 +294,7 @@ Notice the client secret only ever goes from Google into Supabase. Claude never 
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">7 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">8 / 13</div>
 
 <!--
 Spreadsheets are great - they solve a huge range of problems, and that's why everyone uses them.
@@ -321,7 +342,7 @@ And it keeps growing - every week you can ask Claude for the next thing you need
 <p class="text-center text-sm mt-4"><span class="text-red-400 font-semibold">No secrets in the front end.</span> <span class="text-slate-400">The service role key never leaves Supabase.</span></p>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">8 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">9 / 13</div>
 
 <!--
 I want to emphasize this again: SSO comes BEFORE features.
@@ -363,7 +384,7 @@ The one key that must never appear in the front end is the Supabase service role
 <p class="text-green-500 text-xl mt-8">Goal: fair play time for every kid</p>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">9 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">10 / 13</div>
 
 <!--
 Let me show you the app I built for my soccer team.
@@ -400,7 +421,7 @@ The goal is simple: make sure every kid gets fair play time.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">10 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">11 / 13</div>
 
 <!--
 Let's talk money.
@@ -437,7 +458,7 @@ This is sustainable: one subscription, unlimited users on the free tier.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">11 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">12 / 13</div>
 
 <!--
 Here are some ideas to get you started.
@@ -488,7 +509,7 @@ The point is: pick something YOU need. Audience of one.
 </div>
 
 <div class="absolute bottom-4 left-4 text-sm text-slate-500">Dale Hopkins</div>
-<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">12 / 12</div>
+<div class="absolute bottom-4 right-6 text-sm text-slate-500 font-mono">13 / 13</div>
 
 <!--
 So when does this beat Excel?
